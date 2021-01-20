@@ -87,7 +87,8 @@ Airtable is returning the data for this base as follows:
 | Jan 21 | Cell Revealing / Timer                     | Incomplete |
 | Jan 22 | Jan 21 cont'd / Post Scores to Leaderboard | Incomplete |
 | Jan 23 | Bootstrap / Advanced CSS                   | Incomplete |
-| Jan 25 | Presentations                              | Incomplete |
+| Jan 25 | Deployment                                 | Incomplete |
+| Jan 27 | Presentations                              | Incomplete |
 
 ## Timeframes
 
