@@ -16,7 +16,10 @@ The wireframe below depicts the homepage and leaderboard for Minesweeper in web 
 
 ## Component Hierarchy
 
-![imageAlt](https://i.imgur.com/PhRA82l.png)
+![imageAlt](https://i.ibb.co/R2800bM/Screen-Shot-2021-01-20-at-3-14-12-AM.png)
+<!--
+    https://wireframe.cc/6OEh1y
+-->
 
 ## API and Data Sample
 
