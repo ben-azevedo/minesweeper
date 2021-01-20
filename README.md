@@ -33,27 +33,24 @@ Airtable is returning the data for this base as follows:
         {
             "id": "recCLDT6v38PtnfIw",
             "fields": {
-                "rank": 1,
-                "username": "Abrasive Antwon",
-                "time": "0:30"
+                "rank": "Abrasive Antwon",
+                "time": 30
             },
             "createdTime": "2021-01-20T09:42:16.000Z"
         },
         {
             "id": "recnVoFPhy3cATBkt",
             "fields": {
-                "rank": 2,
-                "username": "Bashful Bethany",
-                "time": "0:35"
+                "rank": "Bashful Bethany",
+                "time": 35
             },
             "createdTime": "2021-01-20T09:42:16.000Z"
         },
         {
             "id": "recWTHN0kQg5l7VWj",
             "fields": {
-                "rank": 3,
-                "username": "Crazy Coraline",
-                "time": "0:40"
+                "rank": "Crazy Coraline",
+                "time": 40
             },
             "createdTime": "2021-01-20T09:42:16.000Z"
         }
@@ -63,6 +60,8 @@ Airtable is returning the data for this base as follows:
 
 ```
 
+Each entry contains the user's name, and their time in seconds. Ranks on the leaderboard will be assigned on the React App.
+
 ### MVP/PostMVP
 
 #### MVP
@@ -70,11 +69,11 @@ Airtable is returning the data for this base as follows:
 - Game board with clickable cells that uncover and accurately hint at the number of neighboring 'mines'.
 - A timer that tracks the users progress.
 - Post successful minesweeper scores to the leaderboard and on Airtable.
-- Use forms to edit only the name of leaderboard posts that the user is responsible and update Airtable.
 
 #### PostMVP
 
 - Improve UX with Bootstrap and advanced CSS
+- Use forms to edit only the name of leaderboard posts that the user is responsible and update Airtable.
 - Allow user to choose difficulty level (board size and number of "mines")
 - Add difficulty-level field to Airtable and create algorithm to give user scores based on time and difficulty level
 
