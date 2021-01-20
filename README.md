@@ -8,7 +8,11 @@ Minesweeper is an Airtable and React build that mirrors the classic PC game Mine
 
 The wireframe below depicts the homepage and leaderboard for Minesweeper in web format. The homepage contains a timer keeping track of the users progress, and the game board containing an array of clickable cells, with each reavealing more of the hidden game board. The leaderboard button in the top right-hand corner routes to the leaderboard page which tabulates username, ranking, and user time. The edit button on the lower right-hand corner of that page allows for the user to edit the name of their posted scores.
 
-![imageAlt](https://i.ibb.co/RYFCPSB/Screen-Shot-2021-01-20-at-2-47-58-AM.png =250x)
+![imageAlt](https://i.ibb.co/RYFCPSB/Screen-Shot-2021-01-20-at-2-47-58-AM.png)
+<!--
+    https://wireframe.cc/ut5FUe
+-->
+![imageAlt](https://i.ibb.co/bNYH4rQ/Screen-Shot-2021-01-20-at-3-01-46-AM.png)
 
 ## Component Hierarchy
 
