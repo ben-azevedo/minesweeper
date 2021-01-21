@@ -1,5 +1,5 @@
 function createMap(row, col, bombs) {
-  let map = [];
+  let board = [];
 
   for (let x = 0; x < row; x++) {
     let mapRow = [];
@@ -12,13 +12,13 @@ function createMap(row, col, bombs) {
         revealed: false,
       });
     }
-    map.push(mapRow);
+    board.push(mapRow);
   }
 
-  addBombs(map, row, col, bombs);
-  finalizeMap(map, row, col);
+  addBombs(board, row, col, bombs);
+  finalizeMap(board, row, col);
 
-  return map;
+  return board;
 }
 
 function addBombs(map, row, col, bombs) {
@@ -27,7 +27,7 @@ function addBombs(map, row, col, bombs) {
     let y = Math.floor(Math.random() * col);
 
     if (map[x][y].value === 0) {
-      map[x][y].value = "X";
+      map[x][y].value = "💣";
     } else {
       i--;
     }
@@ -38,142 +38,142 @@ function finalizeMap(map, row, col) {
   for (let i = 0; i < row; i++) {
     for (let j = 0; j < col; j++) {
       let bombCount = 0;
-      if (map[i][j].value !== "X") {
+      if (map[i][j].value !== "💣") {
         if (i === 0 && j === 0) {
           // top left of map
-          if (map[i + 1][j + 1].value === "X") {
+          if (map[i + 1][j + 1].value === "💣") {
             bombCount++;
           } // bottom right
-          if (map[i + 1][j].value === "X") {
+          if (map[i + 1][j].value === "💣") {
             bombCount++;
           } // under
-          if (map[i][j + 1].value === "X") {
+          if (map[i][j + 1].value === "💣") {
             bombCount++;
           } // right
         } else if (i === 0 && j === col - 1) {
           // top right of map
-          if (map[i + 1][j].value === "X") {
+          if (map[i + 1][j].value === "💣") {
             bombCount++;
           } // under
-          if (map[i + 1][j - 1].value === "X") {
+          if (map[i + 1][j - 1].value === "💣") {
             bombCount++;
           } // bottom left
-          if (map[i][j - 1].value === "X") {
+          if (map[i][j - 1].value === "💣") {
             bombCount++;
           } // left
         } else if (i === row - 1 && j === col - 1) {
           // bottom right of map
-          if (map[i - 1][j - 1].value === "X") {
+          if (map[i - 1][j - 1].value === "💣") {
             bombCount++;
           } // top left
-          if (map[i - 1][j].value === "X") {
+          if (map[i - 1][j].value === "💣") {
             bombCount++;
           } // above
-          if (map[i][j - 1].value === "X") {
+          if (map[i][j - 1].value === "💣") {
             bombCount++;
           } // left
         } else if (i === row - 1 && j === 0) {
           // bottom left of map
-          if (map[i - 1][j].value === "X") {
+          if (map[i - 1][j].value === "💣") {
             bombCount++;
           } // above
-          if (map[i - 1][j + 1].value === "X") {
+          if (map[i - 1][j + 1].value === "💣") {
             bombCount++;
           } // top right
-          if (map[i][j + 1].value === "X") {
+          if (map[i][j + 1].value === "💣") {
             bombCount++;
           } // right
         } else if (i === 0) {
           // top edge of map
-          if (map[i + 1][j + 1].value === "X") {
+          if (map[i + 1][j + 1].value === "💣") {
             bombCount++;
           } // bottom right
-          if (map[i + 1][j].value === "X") {
+          if (map[i + 1][j].value === "💣") {
             bombCount++;
           } // under
-          if (map[i + 1][j - 1].value === "X") {
+          if (map[i + 1][j - 1].value === "💣") {
             bombCount++;
           } // bottom left
-          if (map[i][j - 1].value === "X") {
+          if (map[i][j - 1].value === "💣") {
             bombCount++;
           } // left
-          if (map[i][j + 1].value === "X") {
+          if (map[i][j + 1].value === "💣") {
             bombCount++;
           } // right
         } else if (j === col - 1) {
           // right edge of map
-          if (map[i - 1][j - 1].value === "X") {
+          if (map[i - 1][j - 1].value === "💣") {
             bombCount++;
           } // top left
-          if (map[i - 1][j].value === "X") {
+          if (map[i - 1][j].value === "💣") {
             bombCount++;
           } // above
-          if (map[i + 1][j].value === "X") {
+          if (map[i + 1][j].value === "💣") {
             bombCount++;
           } // under
-          if (map[i + 1][j - 1].value === "X") {
+          if (map[i + 1][j - 1].value === "💣") {
             bombCount++;
           } // bottom left
-          if (map[i][j - 1].value === "X") {
+          if (map[i][j - 1].value === "💣") {
             bombCount++;
           } // left
         } else if (i === row - 1) {
           // bottom edge of map
-          if (map[i - 1][j - 1].value === "X") {
+          if (map[i - 1][j - 1].value === "💣") {
             bombCount++;
           } // top left
-          if (map[i - 1][j].value === "X") {
+          if (map[i - 1][j].value === "💣") {
             bombCount++;
           } // above
-          if (map[i - 1][j + 1].value === "X") {
+          if (map[i - 1][j + 1].value === "💣") {
             bombCount++;
           } // top right
-          if (map[i][j - 1].value === "X") {
+          if (map[i][j - 1].value === "💣") {
             bombCount++;
           } // left
-          if (map[i][j + 1].value === "X") {
+          if (map[i][j + 1].value === "💣") {
             bombCount++;
           } // right
         } else if (j === 0) {
           // left edge of map
-          if (map[i - 1][j].value === "X") {
+          if (map[i - 1][j].value === "💣") {
             bombCount++;
           } // above
-          if (map[i - 1][j + 1].value === "X") {
+          if (map[i - 1][j + 1].value === "💣") {
             bombCount++;
           } // top right
-          if (map[i + 1][j + 1].value === "X") {
+          if (map[i + 1][j + 1].value === "💣") {
             bombCount++;
           } // bottom right
-          if (map[i + 1][j].value === "X") {
+          if (map[i + 1][j].value === "💣") {
             bombCount++;
           } // under
-          if (map[i][j + 1].value === "X") {
+          if (map[i][j + 1].value === "💣") {
             bombCount++;
           } // right
         } else {
-          if (map[i - 1][j - 1].value === "X") {
+          if (map[i - 1][j - 1].value === "💣") {
             bombCount++;
           } // top left
-          if (map[i - 1][j].value === "X") {
+          if (map[i - 1][j].value === "💣") {
             bombCount++;
           } // above
-          if (map[i - 1][j + 1].value === "X") {
+          if (map[i - 1][j + 1].value === "💣") {
             bombCount++;
           } // top right
-          if (map[i + 1][j + 1].value === "X") {
+          if (map[i + 1][j + 1].value === "💣") {
             bombCount++;
           } // bottom right
-          if (map[i + 1][j].value === "X") {
+          if (map[i + 1][j].value === "💣") {
             bombCount++;
           } // under
-          if (map[i + 1][j - 1].value === "X") {
+          if (map[i + 1][j - 1].value === "💣") {
             bombCount++;
           } // bottom left
-          if (map[i][j - 1].value === "X") {
+          if (map[i][j - 1].value === "💣") {
             bombCount++;
           } // left
-          if (map[i][j + 1].value === "X") {
+          if (map[i][j + 1].value === "💣") {
             bombCount++;
           } // right
         }
