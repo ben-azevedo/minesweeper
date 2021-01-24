@@ -2,76 +2,218 @@ import { useEffect, useState } from "react";
 import createMap from "../services/CreateMap";
 import Cell from "./Cell";
 import reveal from "../services/Reveal";
+import Modal from "./Modal";
+import Timer from "./Timer";
+import titlePic from "../images/minesweeperTitle.png";
+import gameOverPic from "../images/minesweeperGameOver.png";
+import leaderboardButton from "../images/leaderboardButton.png";
+import { Link } from "react-router-dom";
 
 function Map(props) {
   const [array, setArray] = useState([]);
-  const [nonMines, setNonMines] = useState((props.row * props.col) - props.mines);
-  const [inventory, setInventory] = useState([]);
+  const [gameOver, setGameOver] = useState(false);
+  const [winner, setWinner] = useState(null);
+  const [time, setTime] = useState(0);
+  const [difficulty, setDifficulty] = useState("beginner");
+  const [row, setRow] = useState(9);
+  const [col, setCol] = useState(9);
+  const [mines, setMines] = useState(10);
+  const [nonMines, setNonMines] = useState(row * col - mines);
+  const [reset, setReset] = useState(false);
+
+  const handleDifficulty = (e) => {
+    e.preventDefault();
+    setDifficulty(e.target.value);
+    console.log(e.target.value);
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (difficulty === "beginner") {
+        setRow(9);
+        setCol(9);
+        setMines(10);
+      } else if (difficulty === "intermediate") {
+        setRow(16);
+        setCol(16);
+        setMines(40);
+      } else {
+        setRow(16);
+        setCol(30);
+        setMines(99);
+      }
+    }, 1000);
+    resetTheGame();
+  }, [difficulty]);
+
+  function resetTheGame() {
+    setArray(createMap(row, col, mines));
+    setTime(0);
+    setNonMines(row * col - mines);
+    console.log(`rows: ${row}, col: ${col}, mines: ${mines}, difficulty: ${difficulty}`)
+  }
 
   const handleReveal = (e, x, y) => {
     e.preventDefault();
     let editedMap = array.slice();
-    if (editedMap[x][y].value === '💣') {
-      console.log(editedMap);
+    if (editedMap[x][y].value === "💣") {
       editedMap.forEach((row) => {
         row.forEach((cell) => {
           editedMap[cell.x][cell.y].revealed = true;
-        })
+        });
       });
       setArray(editedMap);
+      setWinner(false);
+      setGameOver(true);
     } else if (!editedMap[x][y].revealed) {
       let result = reveal(editedMap, x, y, nonMines);
       setArray(result.map);
       setNonMines(result.nonMineCount);
     }
-    console.log(`a left click was recieved from cell [${x}, ${y}]`);
-  };
-
-  const handleFlag = (e, x, y) => {
-    e.preventDefault();
-    console.log(`made it to flagger from cell [${x}, ${y}]`);
-    // edit array
-    let editedMap = array.slice();
-    editedMap[x][y].flagged = !editedMap[x][y].flagged;
-    setArray(editedMap);
-    console.log(`editedMap flag for cell [${x}, ${y}] = ${editedMap[x][y].flagged}`);
-    console.log(`array flag for cell [${x}, ${y}] = ${array[x][y].flagged}`);
   };
 
   useEffect(() => {
-    function startGame() {
-      setArray(createMap(props.row, props.col, props.mines));
+    if (nonMines === 0 && !gameOver) {
+      setWinner(true);
+      setGameOver(true);
     }
-    startGame();
-  }, [props]);
+  }, [nonMines]);
 
-  if (!array) {
-    return (<h2>Loading...</h2>);
-  }
+  const handleFlag = (e, x, y) => {
+    e.preventDefault();
+    let editedMap = array.slice();
+    editedMap[x][y].flagged = !editedMap[x][y].flagged;
+    setArray(editedMap);
+  };
 
-  return (
-    <div style={{
+  let vw = Math.max(
+    document.documentElement.clientWidth || 0,
+    window.innerWidth || 0
+  );
+  let vh = Math.max(
+    document.documentElement.clientHeight || 0,
+    window.innerHeight || 0
+  );
+  let cellSize = (0.8 * vw) / col;
+  let numSize = cellSize * 0.8;
+
+  const style = {
+    main: {
       display: "flex",
       alignItems: "center",
       flexDirection: "column",
-    }}>
-      {nonMines}
-      { array.map(row => {
+      height: vh,
+      width: vw,
+    },
+    title: {
+      margin: "30px",
+      width: "90vw",
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+    },
+    analytics: {
+      height: cellSize + 10,
+      width: col * cellSize,
+      fontSize: numSize,
+      background: "#393939",
+      color: "white",
+      borderRadius: "20px 20px 0 0",
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-around",
+      alignItems: "center",
+      gridTemplateAreas: "s d t",
+    },
+    link: {
+      padding: "30px",
+      width: "50vw",
+      color: "white",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  };
+
+  useEffect(() => {
+    if (!gameOver) {
+      setArray(createMap(row, col, mines));
+      setTime(0);
+      setNonMines(row * col - mines);
+    }
+  }, [gameOver]);
+
+  if (!array) {
+    return <h2>Loading...</h2>;
+  }
+
+  return (
+    <div style={style.main}>
+      <Link to="/">
+        <img style={style.title} src={titlePic} />
+      </Link>
+      {gameOver ? (
+        <Modal
+          setGameOver={setGameOver}
+          score={time}
+          row={row}
+          col={col}
+          mines={mines}
+          winner={winner}
+          pic={gameOverPic}
+          xCells={col}
+          yCells={row}
+          cellSize={cellSize}
+        />
+      ) : null}
+      <div style={style.analytics}>
+        <div style={{ gridArea: "s", width: "20vw" }}>🔍 {nonMines}</div>
+        <select
+          style={{
+            gridArea: "d",
+            height: "3vh",
+            width: "25vw",
+            borderRadius: "5px",
+          }}
+          value={difficulty}
+          onChange={(e) => handleDifficulty(e)}
+          placeholder="Difficulty"
+        >
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="expert">Expert</option>
+        </select>
+        <Timer
+          style={{ gridArea: "t", width: "20vw" }}
+          time={time}
+          gameOver={gameOver}
+          setTime={setTime}
+          numSize={numSize}
+          chooseNewDifficulty={difficulty}
+        />
+      </div>
+      {array.map((row) => {
         return (
-          <div
-            style={{ display: "flex" }}>
+          <div style={{ display: "flex" }}>
             {row.map((cell) => {
               return (
                 <Cell
+                  numSize={numSize}
+                  cellSize={cellSize}
                   info={cell}
                   handleReveal={handleReveal}
                   handleFlag={handleFlag}
-                />)
+                />
+              );
             })}
           </div>
-        )
+        );
       })}
-    </div>);
+      <Link to="/leaderboard">
+        <img style={style.link} src={leaderboardButton} />
+      </Link>
+    </div>
+  );
 }
 
 export default Map;

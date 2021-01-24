@@ -11,7 +11,7 @@ function Cell(props) {
       }
     } else {
       if ((x % 2 === 0 && y % 2 === 0) || (x % 2 !== 0 && y % 2 !== 0)) {
-        return "#aad751";
+        return "#acd953";
       } else {
         return "#a2d249";
       }
@@ -35,8 +35,9 @@ function Cell(props) {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      width: 30,
-      height: 30,
+      width: `${props.cellSize}px`,
+      height: `${props.cellSize}px`,
+      fontSize: props.numSize,
     },
   };
 
@@ -48,7 +49,7 @@ function Cell(props) {
         return props.info.value;
       }
     } else if (props.info.flagged && !props.info.revealed) {
-      return "✋🏿";
+      return "🔻";
     } else {
       return "";
     }

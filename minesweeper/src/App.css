@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background: url("./images/flashingStar.gif");
+  width: 100vw;
+  height: 100vh;
 }
 
 .App-logo {
