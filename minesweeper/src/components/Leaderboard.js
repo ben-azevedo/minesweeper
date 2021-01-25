@@ -25,7 +25,6 @@ function Leaderboard(props) {
       time: entry.fields.time,
       difficulty: entry.fields.difficulty,
       score: score(entry.fields.time, entry.fields.difficulty),
-      color: "",
     };
     leaders.push(newEntry);
   });
@@ -76,21 +75,6 @@ function Leaderboard(props) {
   if (leaders.length >= 10) {
     finalTen = finalTen.slice(0, 10);
   }
-  const color = [
-    "lightblue",
-    "pink",
-    "red",
-    "orange",
-    "yellow",
-    "limegreen",
-    "green",
-    "teal",
-    "lightblue",
-    "cornflowerblue",
-  ];
-  for (let i = 0; i < finalTen.length; i++) {
-    finalTen[i].color = color[i];
-  }
 
   let vw = Math.min(
     document.documentElement.clientWidth || 0,
@@ -101,8 +85,8 @@ function Leaderboard(props) {
     window.innerHeight || 0
   );
 
-  let sizing = vh > vw ? "4vh" : "4vw";
-  let label = vh > vw ? "4.5vh" : "4.5vw";
+  let sizing = vh > vw ? "5vh" : "5vw";
+  let label = vh > vw ? "6vh" : "6vw";
 
   const style = {
     leader: {
@@ -126,7 +110,7 @@ function Leaderboard(props) {
     },
     title: {
       width: "70vw",
-      padding: "3vh",
+      padding: "4vh",
     },
     backToGame: {
       marginTop: "5vh",
@@ -150,15 +134,6 @@ function Leaderboard(props) {
     }
   }
 
-  //   const glow = keyframes`
-  //   from {
-  //     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-  //   }
-  //   to {
-  //     text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-  //   }
-  // `
-
   return (
     <div style={style.main}>
       <Link to="/">
@@ -166,6 +141,7 @@ function Leaderboard(props) {
       </Link>
       <div style={style.leader}>
         <div
+          class="glowTitles" 
           style={{
             display: "flex",
             flexDirection: "row",
@@ -179,11 +155,10 @@ function Leaderboard(props) {
         </div>
         {finalTen.map((item, key) => (
           <div
+            class={`glow${key + 1}`}
             style={{
               display: "flex",
               flexDirection: "row",
-              color: item.color,
-              // animation: `${glow} 1s ease-in-out infinite alternate`
             }}
           >
             <div style={{ width: "15vw" }}>

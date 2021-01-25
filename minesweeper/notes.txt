@@ -1,8 +1,4 @@
 1. Get the off-modal click to work
 2. Give the game over png an animation
-3. Give the leaderboard words the glow animation
-4. Allow to select game difficulty
 5. Add button that modals over the game area to start the game
-7. Add Pixeboy font
-8. fix weird timer function
 9. weird page size thing at the bottom of the game page

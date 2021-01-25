@@ -1,41 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
 .App {
   text-align: center;
   background: url("./images/flashingStar.gif");
-  width: 100vw;
-  height: 100vh;
+  font-family: 'VT323', monospace;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.close {
   color: white;
+  margin: 30px;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: bold;
+  border: 2px red solid;
+  animation: flash 1s ease-in-out infinite alternate;
+  -webkit-animation: flash 1s ease-in-out infinite alternate;
+  -moz-animation: flash 1s ease-in-out infinite alternate;
 }
 
-.App-link {
-  color: #61dafb;
+.message {
+  animation: blend 1s ease-in-out infinite alternate;
+  -webkit-animation: blend 1s ease-in-out infinite alternate;
+  -moz-animation: blend 1s ease-in-out infinite alternate;
 }
 
-@keyframes App-logo-spin {
+@keyframes blend {
+  0%   {color: red;}
+  20%  {color: orange;}
+  40%  {color: yellow;}
+  60%  {color: green;}
+  80%  {color: blue;}
+  100% {color: purple;}
+}
+
+@keyframes flash {
   from {
-    transform: rotate(0deg);
+    color: red;
+    border: 2px white solid;
   }
   to {
-    transform: rotate(360deg);
+    color: white;
+    border: 2px red solid;
   }
 }
+
+/* .glowTitles {
+  animation: glow 1s ease-in-out infinite alternate;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+  text-shadow:  0 0 10px #fff, 0 0 20px #fff, 0 0 30px #dd5398, 0 0    40px #dd5398, 0 0 50px #dd5398, 0 0 60px #dd5398, 0 0 70px #dd5398;
+  }
+  to {
+  text-shadow:  0 0 20px #fff, 0 0 30px #f0cfdf, 0 0 40px #f0cfdf, 0 0 50px #f0cfdf, 0 0 60px #f0cfdf, 0 0 70px #f0cfdf, 0 0 80px #f0cfdf;
+  }
+}
+
+.glow1 {
+  color: "white";
+  text-shadow:  0 0 5px #fff, 0 0 10px #00a5e6, 0 0 15px #00a5e6, 0 0 20px #00a5e6, 0 0 25px #00a5e6, 0 0 30px #00a5e6;
+}
+
+.glow2 {
+  text-shadow:  0 0 5px #fff, 0 0 10px #e60073, 0 0 15px #e60073, 0 0 20px #e60073, 0 0 25px #e60073, 0 0 30px #e60073;
+}
+
+.glow3 {
+  text-shadow:  0 0 5px #fff, 0 0 10px #e60000, 0 0 15px #e60000, 0 0 20px #e60000, 0 0 25px #e60000, 0 0 30px #e60000;
+}
+
+.glow4 {
+  text-shadow:  0 0 5px #fff, 0 0 10px #e68200, 0 0 15px #e68200, 0 0 20px #e68200, 0 0 25px #e68200, 0 0 30px #e68200;
+}
+
+.glow5 {
+  text-shadow:  0 0 5px #fff, 0 0 10px #eed12e, 0 0 15px #eed12e, 0 0 20px #eed12e, 0 0 25px #eed12e, 0 0 30px #eed12e;
+}
+
+.glow6 {
+  text-shadow:  0 0 5px #fff, 0 0 10px #a4ee2e, 0 0 15px #a4ee2e, 0 0 20px #a4ee2e, 0 0 25px #a4ee2e, 0 0 30px #a4ee2e;
+}
+
+.glow7 {
+  text-shadow:  0 0 5px #fff, 0 0 10px #1dbd18, 0 0 15px #1dbd18, 0 0 20px #1dbd18, 0 0 25px #1dbd18, 0 0 30px #1dbd18;
+}
+
+.glow8 {
+  text-shadow:  0 0 5px #fff, 0 0 10px #36eea1, 0 0 15px #36eea1, 0 0 20px #36eea1, 0 0 25px #36eea1, 0 0 30px #36eea1;
+}
+
+.glow9 {
+  text-shadow:  0 0 5px #fff, 0 0 10px #36e8ee, 0 0 15px #36e8ee, 0 0 20px #36e8ee, 0 0 25px #36e8ee, 0 0 30px #36e8ee;
+}
+
+.glow10 {
+  text-shadow:  0 0 5px #fff, 0 0 10px #36c9ee, 0 0 15px #36c9ee, 0 0 20px #36c9ee, 0 0 25px#36c9ee, 0 0 30px #36c9ee;
+} */

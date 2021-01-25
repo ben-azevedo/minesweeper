@@ -57,7 +57,7 @@ function App() {
         </div>
       </Route>
       <Route path="/minesweeper_game">
-        <Map col={16} row={16} mines={10} />
+        <Map />
       </Route>
       <Route path="/leaderboard">
         <Leaderboard />

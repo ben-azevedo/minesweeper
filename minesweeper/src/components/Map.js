@@ -23,28 +23,30 @@ function Map(props) {
 
   const handleDifficulty = (e) => {
     e.preventDefault();
+    console.log(difficulty);
     setDifficulty(e.target.value);
     console.log(e.target.value);
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      if (difficulty === "beginner") {
-        setRow(9);
-        setCol(9);
-        setMines(10);
-      } else if (difficulty === "intermediate") {
-        setRow(16);
-        setCol(16);
-        setMines(40);
-      } else {
-        setRow(16);
-        setCol(30);
-        setMines(99);
-      }
-    }, 1000);
-    resetTheGame();
+    if (difficulty === "beginner") {
+      setRow(9);
+      setCol(9);
+      setMines(10);
+    } else if (difficulty === "intermediate") {
+      setRow(16);
+      setCol(16);
+      setMines(40);
+    } else {
+      setRow(16);
+      setCol(30);
+      setMines(99);
+    }
   }, [difficulty]);
+
+  useEffect(() => {
+    resetTheGame();
+  }, [row, col, mines])
 
   function resetTheGame() {
     setArray(createMap(row, col, mines));
@@ -126,7 +128,7 @@ function Map(props) {
       gridTemplateAreas: "s d t",
     },
     link: {
-      padding: "30px",
+      margin: "30px",
       width: "50vw",
       color: "white",
       display: "flex",
@@ -164,6 +166,8 @@ function Map(props) {
           xCells={col}
           yCells={row}
           cellSize={cellSize}
+          difficulty={difficulty}
+          restart={resetTheGame}
         />
       ) : null}
       <div style={style.analytics}>
@@ -177,7 +181,6 @@ function Map(props) {
           }}
           value={difficulty}
           onChange={(e) => handleDifficulty(e)}
-          placeholder="Difficulty"
         >
           <option value="beginner">Beginner</option>
           <option value="intermediate">Intermediate</option>
@@ -190,6 +193,7 @@ function Map(props) {
           setTime={setTime}
           numSize={numSize}
           chooseNewDifficulty={difficulty}
+          winner={winner}
         />
       </div>
       {array.map((row) => {
