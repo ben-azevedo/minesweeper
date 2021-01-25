@@ -44,7 +44,7 @@
   }
 }
 
-/* .glowTitles {
+.glowTitles {
   animation: glow 1s ease-in-out infinite alternate;
   -webkit-animation: glow 1s ease-in-out infinite alternate;
   -moz-animation: glow 1s ease-in-out infinite alternate;
@@ -98,4 +98,4 @@
 
 .glow10 {
   text-shadow:  0 0 5px #fff, 0 0 10px #36c9ee, 0 0 15px #36c9ee, 0 0 20px #36c9ee, 0 0 25px#36c9ee, 0 0 30px #36c9ee;
-} */
+}
