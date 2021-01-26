@@ -5,11 +5,13 @@ function Timer(props) {
   const [timeInterval, setTimeInterval] = useState("");
 
   useEffect(() => {
-    setTimeInterval(setInterval(() => {
-      setTime(prev => prev + 1);
-    }, 1000));
+    if (!gameOver) {
+      setTimeInterval(setInterval(() => {
+        setTime(prev => prev + 1);
+      }, 1000));
+    }
     return () => clearInterval(timeInterval);
-  }, [chooseNewDifficulty]);
+  }, [gameOver]);
   
   useEffect(() => {
     if (!winner) {

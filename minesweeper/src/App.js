@@ -4,6 +4,9 @@ import titlePic from "./images/minesweeperTitle.png";
 import startButton from "./images/startButton.png";
 import leaderboardButton from "./images/leaderboardButton.png";
 import { Link, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { baseURL, config } from "./services";
 import "./App.css";
 
 // Original Minesweeper Difficulty Levels
@@ -12,6 +15,30 @@ import "./App.css";
 // Expert: 16x30 w/ 99 mines
 
 function App() {
+  const [entries, setEntries] = useState([]);
+  const [toggleFetch, setToggleFetch] = useState(false);
+  
+  function score(time, difficulty) {
+    return Math.ceil(difficulty * (1000 - time));
+  }
+
+  useEffect(() => {
+    const apiCall = async () => {
+      const resp = await axios.get(baseURL, config);
+      let leaders = [];
+      resp.data.records.forEach((entry) => {
+        let newEntry = {
+          name: entry.fields.name,
+          time: entry.fields.time,
+          difficulty: entry.fields.difficulty,
+          score: score(entry.fields.time, entry.fields.difficulty),
+        };
+        leaders.push(newEntry);
+      });
+      setEntries(leaders);
+    };
+    apiCall();
+  }, [toggleFetch]);
 
   const style = {
     page: {
@@ -57,10 +84,13 @@ function App() {
         </div>
       </Route>
       <Route path="/minesweeper_game">
-        <Map />
+        <Map
+          setToggleFetch={setToggleFetch}/>
       </Route>
       <Route path="/leaderboard">
-        <Leaderboard />
+        <Leaderboard
+          entries={entries}
+        />
       </Route>
     </div>
   );

@@ -8,6 +8,11 @@
 
 .close {
   color: white;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
   margin: 30px;
   padding: 5px;
   font-size: 28px;
@@ -29,8 +34,8 @@
   20%  {color: orange;}
   40%  {color: yellow;}
   60%  {color: green;}
-  80%  {color: blue;}
-  100% {color: purple;}
+  80%  {color: rgb(0, 195, 255);}
+  100% {color: rgb(230, 86, 230);}
 }
 
 @keyframes flash {

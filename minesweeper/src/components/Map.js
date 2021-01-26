@@ -5,7 +5,7 @@ import reveal from "../services/Reveal";
 import Modal from "./Modal";
 import Timer from "./Timer";
 import titlePic from "../images/minesweeperTitle.png";
-import gameOverPic from "../images/minesweeperGameOver.png";
+import gameOverPic from "../images/gameOverGIF.gif";
 import leaderboardButton from "../images/leaderboardButton.png";
 import { Link } from "react-router-dom";
 
@@ -46,13 +46,16 @@ function Map(props) {
 
   useEffect(() => {
     resetTheGame();
-  }, [row, col, mines])
+  }, [row, col, mines]);
 
   function resetTheGame() {
+    setGameOver(false);
     setArray(createMap(row, col, mines));
     setTime(0);
     setNonMines(row * col - mines);
-    console.log(`rows: ${row}, col: ${col}, mines: ${mines}, difficulty: ${difficulty}`)
+    console.log(
+      `rows: ${row}, col: ${col}, mines: ${mines}, difficulty: ${difficulty}`
+    );
   }
 
   const handleReveal = (e, x, y) => {
@@ -168,6 +171,7 @@ function Map(props) {
           cellSize={cellSize}
           difficulty={difficulty}
           restart={resetTheGame}
+          setToggleFetch={props.setToggleFetch}
         />
       ) : null}
       <div style={style.analytics}>

@@ -3,10 +3,6 @@ import Form from "./Form.js";
 
 function Modal(props) {
   const [popUp, setPopUp] = useState(null);
-  // one state for leaderboard
-  const [leaderboard, setLeaderboard] = useState([]);
-  // one state for toggle
-  const [toggleFetch, setToggleFetch] = useState(false);
 
   const style = {
     general: {
@@ -36,7 +32,14 @@ function Modal(props) {
       top: popUp === null ? "40vh" : "0px",
       transition: "all 1s ease-in-out",
       opacity: 1,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
     },
+    text: {
+      width: `${props.yCells * props.cellSize}px`,
+    }
   };
 
   useEffect(() => {
@@ -59,21 +62,26 @@ function Modal(props) {
       {popUp ? (
         <div></div>
       ) : (
-        <img style={style.gameOver} src={props.pic} />
+        <div style={style.gameOver}>
+          <img style={style.text} src={props.pic} />
+          <div class="close" onClick={props.restart}>
+            Back to Game
+          </div>
+        </div>
       )}
       {popUp && (
         <div style={style.winner}>
           <Form
-            setToggleFetch={setToggleFetch}
+            setToggleFetch={props.setToggleFetch}
             score={props.score}
             col={props.col}
             row={props.row}
             mines={props.mines}
             difficulty={props.difficulty}
-            shut={setPopUp}/>
+            shut={setPopUp}
+          />
         </div>
       )}
-      <div class="close" onClick={props.restart}>Back to Game</div>
     </div>
   );
 }

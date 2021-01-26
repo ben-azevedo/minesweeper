@@ -1,39 +1,12 @@
 import { Link } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
 import leaderPic from "../images/leaderboardTitle.png";
 import backToGamePic from "../images/backButton.png";
-import { baseURL, config } from "../services";
-import styled, { css, keyframes } from "styled-components";
-//import "./Leaderboard.css";
 
 function Leaderboard(props) {
-  const [entries, setEntries] = useState([]);
 
-  useEffect(() => {
-    const apiCall = async () => {
-      const resp = await axios.get(baseURL, config);
-      setEntries(resp.data.records);
-    };
-    apiCall();
-  }, []);
+  const { entries } = props;
 
-  let leaders = [];
-  entries.forEach((entry) => {
-    let newEntry = {
-      name: entry.fields.name,
-      time: entry.fields.time,
-      difficulty: entry.fields.difficulty,
-      score: score(entry.fields.time, entry.fields.difficulty),
-    };
-    leaders.push(newEntry);
-  });
-
-  function score(time, difficulty) {
-    return Math.ceil(difficulty * (1000 - time));
-  }
-
-  let finalTen = mergeSort(leaders.slice());
+  let finalTen = mergeSort(entries.slice());
 
   function mergeSort(arr) {
     return sort(arr);
@@ -72,7 +45,7 @@ function Leaderboard(props) {
     return merge(l, r);
   }
 
-  if (leaders.length >= 10) {
+  if (entries.length >= 10) {
     finalTen = finalTen.slice(0, 10);
   }
 
@@ -141,7 +114,7 @@ function Leaderboard(props) {
       </Link>
       <div style={style.leader}>
         <div
-          class="glowTitles" 
+          class="glowTitles"
           style={{
             display: "flex",
             flexDirection: "row",
@@ -151,7 +124,7 @@ function Leaderboard(props) {
         >
           <div style={{ width: "15vw" }}>RANK</div>
           <div style={{ width: "50vw" }}>NAME</div>
-          <div style={{ width: "15vw" }}>SCORE</div>
+          <div style={{ width: "20vw" }}>SCORE</div>
         </div>
         {finalTen.map((item, key) => (
           <div
@@ -166,7 +139,7 @@ function Leaderboard(props) {
               {suffix(key + 1)}
             </div>
             <div style={{ width: "50vw" }}>{item.name}</div>
-            <div style={{ width: "15vw" }}>{item.score}</div>
+            <div style={{ width: "20vw" }}>{item.score}</div>
           </div>
         ))}
       </div>
