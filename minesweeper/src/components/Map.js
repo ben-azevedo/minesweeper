@@ -19,7 +19,6 @@ function Map(props) {
   const [col, setCol] = useState(9);
   const [mines, setMines] = useState(10);
   const [nonMines, setNonMines] = useState(row * col - mines);
-  const [reset, setReset] = useState(false);
 
   const handleDifficulty = (e) => {
     e.preventDefault();
@@ -99,7 +98,17 @@ function Map(props) {
     document.documentElement.clientHeight || 0,
     window.innerHeight || 0
   );
-  let cellSize = (0.8 * vw) / col;
+
+  let cellSize = (0.6 * vh) / col;
+  let titleWidth = "90vh";
+  let linkWidth = "30vh"
+
+  if (vw < vh) {
+    cellSize = (0.6 * vw) / col;
+    titleWidth = "90vw";
+    linkWidth = "30vw";
+  }
+
   let numSize = cellSize * 0.8;
 
   const style = {
@@ -112,7 +121,7 @@ function Map(props) {
     },
     title: {
       margin: "30px",
-      width: "90vw",
+      width: titleWidth,
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",
@@ -120,7 +129,7 @@ function Map(props) {
     analytics: {
       height: cellSize + 10,
       width: col * cellSize,
-      fontSize: numSize,
+      fontSize: numSize * 0.75,
       background: "#393939",
       color: "white",
       borderRadius: "20px 20px 0 0",
@@ -132,7 +141,7 @@ function Map(props) {
     },
     link: {
       margin: "30px",
-      width: "50vw",
+      width: linkWidth,
       color: "white",
       display: "flex",
       justifyContent: "center",
@@ -175,13 +184,14 @@ function Map(props) {
         />
       ) : null}
       <div style={style.analytics}>
-        <div style={{ gridArea: "s", width: "20vw" }}>🔍 {nonMines}</div>
+        <div style={{ gridArea: "s", width: "10vw" }}>🔍 {nonMines}</div>
         <select
           style={{
             gridArea: "d",
             height: "3vh",
-            width: "25vw",
+            width: "10vw",
             borderRadius: "5px",
+            border: "2px solid"
           }}
           value={difficulty}
           onChange={(e) => handleDifficulty(e)}
@@ -191,7 +201,7 @@ function Map(props) {
           <option value="expert">Expert</option>
         </select>
         <Timer
-          style={{ gridArea: "t", width: "20vw" }}
+          style={{ gridArea: "t", width: "10vw" }}
           time={time}
           gameOver={gameOver}
           setTime={setTime}

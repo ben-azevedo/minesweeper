@@ -3,7 +3,6 @@ import leaderPic from "../images/leaderboardTitle.png";
 import backToGamePic from "../images/backButton.png";
 
 function Leaderboard(props) {
-
   const { entries } = props;
 
   let finalTen = mergeSort(entries.slice());
@@ -58,8 +57,16 @@ function Leaderboard(props) {
     window.innerHeight || 0
   );
 
-  let sizing = vh > vw ? "5vh" : "5vw";
-  let label = vh > vw ? "6vh" : "6vw";
+  let sizing = vh > vw ? "3vh" : "3vw";
+  let label = vh > vw ? "5vh" : "5vw";
+
+  let titleWidth = "80vh";
+  let linkWidth = "30vh";
+
+  if (vw < vh) {
+    titleWidth = "80vw";
+    linkWidth = "30vw";
+  }
 
   const style = {
     leader: {
@@ -82,12 +89,12 @@ function Leaderboard(props) {
       color: "white",
     },
     title: {
-      width: "70vw",
+      width: titleWidth,
       padding: "4vh",
     },
     backToGame: {
       marginTop: "5vh",
-      width: "35vw",
+      width: linkWidth,
       color: "white",
       display: "flex",
       justifyContent: "center",
@@ -122,9 +129,9 @@ function Leaderboard(props) {
             fontSize: label,
           }}
         >
-          <div style={{ width: "15vw" }}>RANK</div>
-          <div style={{ width: "50vw" }}>NAME</div>
-          <div style={{ width: "20vw" }}>SCORE</div>
+          <div style={{ width: "10vw" }}>RANK</div>
+          <div style={{ width: "35vw" }}>NAME</div>
+          <div style={{ width: "10vw" }}>SCORE</div>
         </div>
         {finalTen.map((item, key) => (
           <div
@@ -134,12 +141,12 @@ function Leaderboard(props) {
               flexDirection: "row",
             }}
           >
-            <div style={{ width: "15vw" }}>
+            <div style={{ width: "10vw" }}>
               {key + 1}
               {suffix(key + 1)}
             </div>
-            <div style={{ width: "50vw" }}>{item.name}</div>
-            <div style={{ width: "20vw" }}>{item.score}</div>
+            <div style={{ width: "35vw" }}>{item.name}</div>
+            <div style={{ width: "10vw" }}>{item.score}</div>
           </div>
         ))}
       </div>

@@ -54,7 +54,7 @@ function App() {
     },
     start: {
       marginTop: "10vh",
-      width: "35vw",
+      width: "25vw",
       color: "white",
       display: "flex",
       justifyContent: "center",
@@ -62,7 +62,7 @@ function App() {
     },
     leaderboard: {
       marginTop: "5vh",
-      width: "35vw",
+      width: "25vw",
       color: "white",
       display: "flex",
       justifyContent: "center",
