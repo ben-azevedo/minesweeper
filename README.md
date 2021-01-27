@@ -1,5 +1,7 @@
 # Minesweeper
 
+Link: https://wonderful-knuth-b1a63d.netlify.app/
+
 ## Project Description
 
 Minesweeper is an Airtable and React build that mirrors the classic PC game Minesweeper. From the homepage, the user is able to play a game of minesweeper. The user must clear a board containing hidden "mines" without "detonating" any of them, with help from clues about the number of neighboring mines in each non-mine cell on the board. If sucesseful, the user's time will be tabulated to a leaderboard, requiring the user's name. (The user will be able to edit the name of their leaderboard standings).
