@@ -101,9 +101,9 @@ Each entry contains the user's name, and their time in seconds. Ranks on the lea
 | Game Play                 |    H     |      6hrs      |     5hrs      |
 | Leaderboard               |    H     |     .5hrs      |     5hrs      |
 | Posting to Leaderboard    |    H     |      4hrs      |     2hrs      |
-| Play Again?               |    H     |      2hrs      |     3hrs      |
+| Play Again?               |    H     |      2hrs      |     6hrs      |
 | Advanced CSS              |    H     |      5hrs      |     5hrs      |
-| Total                     |    n/a   |     29hrs      |     32.5hrs   |
+| Total                     |    n/a   |     29hrs      |     36.5hrs   |
 
 ## SWOT Analysis
 
