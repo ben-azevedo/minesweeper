@@ -29,6 +29,33 @@
   -moz-animation: blend 1s ease-in-out infinite alternate;
 }
 
+@media (max-width: 600px) {
+  .logo-big {
+    display: none;
+  }
+
+  #company {
+    position: absolute;
+    text-align: center;
+    top: 15px;
+    left: 35%;
+  }
+
+  .search {
+    border-bottom: 3px black solid;
+  }
+
+  .searchBar {
+    font-weight: bold;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    top: 95px;
+    left: 10px;
+  }
+}
+
+
 @keyframes blend {
   0%   {color: red;}
   20%  {color: orange;}

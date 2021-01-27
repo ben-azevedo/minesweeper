@@ -72,7 +72,7 @@ Each entry contains the user's name, and their time in seconds. Ranks on the lea
 
 #### PostMVP
 
-- Improve UX with Bootstrap and advanced CSS
+- Improve UX with animations and advanced CSS
 - Use forms to edit only the name of leaderboard posts that the user is responsible and update Airtable.
 - Allow user to choose difficulty level (board size and number of "mines")
 - Add difficulty-level field to Airtable and create algorithm to give user scores based on time and difficulty level
@@ -81,30 +81,29 @@ Each entry contains the user's name, and their time in seconds. Ranks on the lea
 
 | Day    | Deliverable                                | Status     |
 | ------ | ------------------------------------------ | ---------- |
-| Jan 20 | Proposal Approval / Airtable Setup         | Pending    |
-| Jan 20 | Component Creation / Get, Set, Edit Data   | Incomplete |
-| Jan 21 | Cell Revealing / Timer                     | Incomplete |
-| Jan 22 | Jan 21 cont'd / Post Scores to Leaderboard | Incomplete |
-| Jan 23 | Bootstrap / Advanced CSS                   | Incomplete |
-| Jan 25 | Deployment                                 | Incomplete |
+| Jan 20 | Proposal Approval / Airtable Setup         | Complete   |
+| Jan 20 | Component Creation / Get, Set, Edit Data   | Complete   |
+| Jan 21 | Cell Revealing / Timer                     | Complete   |
+| Jan 22 | Jan 21 cont'd / Post Scores to Leaderboard | Complete   |
+| Jan 23 | Advanced CSS                               | Complete   |
+| Jan 25 | Deployment                                 | Complete   |
 | Jan 27 | Presentations                              | Incomplete |
 
 ## Timeframes
 
 | Component                 | Priority | Estimated Time | Time Invested |
 | ------------------------- | :------: | :------------: | :-----------: |
-| Proposal                  |    H     |      3hrs      |     _hrs      |
-| Airtable setup            |    H     |     .5hrs      |     _hrs      |
-| Game Board                |    H     |      1hr       |     _hrs      |
-| Cells                     |    H     |      3hrs      |     _hrs      |
-| Timer                     |    H     |      2hrs      |     _hrs      |
-| Game Play                 |    H     |      6hrs      |     _hrs      |
-| Leaderboard               |    H     |     .5hrs      |     _hrs      |
-| Posting to Leaderboard    |    H     |      4hrs      |     _hrs      |
-| Leaderboard Edit          |    H     |      2hrs      |     _hrs      |
-| Play Again?               |    H     |      2hrs      |     _hrs      |
-| Bootstrap/Advanced CSS    |    H     |      5hrs      |     _hrs      |
-| Total                     |    n/a   |     29hrs      |     _hrs      |
+| Proposal                  |    H     |      3hrs      |     4hrs      |
+| Airtable setup            |    H     |     .5hrs      |     1hr       |
+| Game Board                |    H     |      1hr       |     8hrs      |
+| Cells                     |    H     |      3hrs      |     0.5hrs    |
+| Timer                     |    H     |      2hrs      |     4hrs      |
+| Game Play                 |    H     |      6hrs      |     5hrs      |
+| Leaderboard               |    H     |     .5hrs      |     5hrs      |
+| Posting to Leaderboard    |    H     |      4hrs      |     2hrs      |
+| Play Again?               |    H     |      2hrs      |     6hrs      |
+| Advanced CSS              |    H     |      5hrs      |     5hrs      |
+| Total                     |    n/a   |     29hrs      |     36.5hrs   |
 
 ## SWOT Analysis
 
